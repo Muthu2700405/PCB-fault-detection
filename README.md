@@ -1,6 +1,8 @@
 # PCB-fault-detection
 Deployed custom trained yolov8 model to predict the defects in a PCB
 
+Defects can be detected : missing hole, mouse bite, open circuit , short , spur ,spurious copper
+
 Model : YOLOv8n
 Environment : Anaconda , VS code
 Tech Stack: HTML , CSS , JS , Flask 
