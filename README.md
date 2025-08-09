@@ -2,6 +2,8 @@
 Deployed custom trained yolov8 model to predict the defects in a PCB
 
 Defects can be detected : missing hole, mouse bite, open circuit , short , spur ,spurious copper
+<img width="2831" height="2174" alt="image" src="https://github.com/user-attachments/assets/4697b016-a02d-4d9b-af15-815bb3b0ea05" />
+
 
 Model : YOLOv8n
 Environment : Anaconda , VS code
