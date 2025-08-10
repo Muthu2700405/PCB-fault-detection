@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PCB fault detector</title>
+    <!-- load css from Flask static -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+</head>
+
+<body>
+    <!--header-->
+    <div class="header">
+        <img src="{{ url_for('static', filename='logo.png') }}" height="50" width="80" alt="logo"
+            style="display: inline;">
+        <h2>PCBchecker</h2>
+    </div>
+
+    <!--Photo uploader-->
+    <div class="photo-section">
+        <div class="photo-info">
+            <img src="{{ url_for('static', filename='fault detection.gif') }}" alt="fault detection" id="image-preview">
+            <p class="my-text">100% Automatically and <span class="highlight">Free</span></p>
+        </div>
+
+        <div class="upload">
+            <label for="upload-button" class="butt">
+                <h4>Upload</h4>
+            </label>
+            <input id="upload-button" type="file" accept="image/*" hidden>
+            <p style="font-weight: bold;">Upload your pcb image here</p>
+            <p id="status-text">
+            </p>
+            <div id="results-container"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div>
+            <h2>PCBchecker</h2>
+            <p>Forging the future, one flawless circuit at a time</p>
+            <a href="https://github.com/Muthu2700405"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/muthukumaravel-k-79604a268/"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="mailto:muthu270405@gmail.com"><i class="fa-brands fa-google"></i></a>
+            <p>@2025 PCB checker and co</p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; flex-basis: 40%;">
+            <div>
+                <h3> Zero Defects. 100% Connection</h3>
+                <p>A micron of error can cause a mile of failure. We check every micron</p>
+            </div>
+            <br>
+            <div>
+                <h3>Address</h3>
+                <p>Kumaraguru College of Technology - Coimbatore</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
