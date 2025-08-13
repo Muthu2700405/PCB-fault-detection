@@ -1,6 +1,0 @@
-Flask
-torch
-pandas
-Pillow
-ultralytics
-gunicorn

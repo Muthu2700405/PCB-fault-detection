@@ -1,28 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PCB fault detector</title>
-    <!-- load css from Flask static -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
 </head>
 
 <body>
-    <!--header-->
     <div class="header">
-        <img src="{{ url_for('static', filename='logo.png') }}" height="50" width="80" alt="logo"
-            style="display: inline;">
+        <img src="logo.png" height="50" width="80" alt="logo" style="display: inline;">
         <h2>PCBchecker</h2>
     </div>
 
-    <!--Photo uploader-->
     <div class="photo-section">
         <div class="photo-info">
-            <img src="{{ url_for('static', filename='fault detection.gif') }}" alt="fault detection" id="image-preview">
+            <img src="fault detection.gif" alt="fault detection" id="image-preview">
             <p class="my-text">100% Automatically and <span class="highlight">Free</span></p>
         </div>
 
@@ -32,13 +27,11 @@
             </label>
             <input id="upload-button" type="file" accept="image/*" hidden>
             <p style="font-weight: bold;">Upload your pcb image here</p>
-            <p id="status-text">
-            </p>
+            <p id="status-text"></p>
             <div id="results-container"></div>
         </div>
     </div>
 
-    <!-- Footer -->
     <div class="footer">
         <div>
             <h2>PCBchecker</h2>
@@ -61,7 +54,6 @@
         </div>
     </div>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="script.js"></script>
 </body>
-
 </html>
