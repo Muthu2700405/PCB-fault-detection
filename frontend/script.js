@@ -1,4 +1,5 @@
-const backendURL = "https://your-render-backend.onrender.com"; // change after deployment
+// script.js (frontend)
+const BACKEND_URL = "https://REPLACE_WITH_YOUR_RENDER_URL"; // e.g. https://pcb-backend.onrender.com
 
 const uploadInput = document.getElementById("upload-button");
 const imagePreview = document.getElementById("image-preview");
@@ -8,57 +9,57 @@ const statusText = document.getElementById("status-text");
 uploadInput.addEventListener("change", async (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    imagePreview.src = URL.createObjectURL(file);
-    await sendFile(file);
-});
 
-async function sendFile(file) {
+    // show preview locally
+    imagePreview.src = URL.createObjectURL(file);
+
+    // send to backend
     statusText.innerText = "Processing...";
     resultsContainer.innerHTML = "";
 
-    const formData = new FormData();
-    formData.append("file", file);
+    const fd = new FormData();
+    fd.append("file", file);
 
     try {
-        const resp = await fetch(`${backendURL}/detect`, {
+        const resp = await fetch(`${BACKEND_URL}/detect`, {
             method: "POST",
-            body: formData
+            body: fd
         });
 
         const data = await resp.json();
         if (!resp.ok) {
-            statusText.innerText = data.error || "Processing failed";
+            statusText.innerText = data.error || "Server error";
             return;
         }
 
         statusText.innerText = `Detected Errors: ${data.detections}`;
 
+        // annotated image is base64
         const img = document.createElement("img");
-        img.src = "data:image/jpeg;base64," + data.result_image_b64;
-        img.alt = "Annotated result";
+        img.src = "data:image/jpeg;base64," + data.image_b64;
         img.style.maxWidth = "350px";
         img.style.display = "block";
         img.style.marginTop = "12px";
 
-        const listDiv = document.createElement("div");
-        listDiv.className = "detected-list";
-        if (data.detected && data.detected.length > 0) {
+        // list detected
+        const list = document.createElement("div");
+        list.className = "detected-list";
+        if (data.detected && data.detected.length) {
             data.detected.forEach(d => {
                 const p = document.createElement("p");
-                p.innerText = `${d.name} — confidence: ${d.confidence}`;
-                listDiv.appendChild(p);
+                p.innerText = `${d.name} — conf: ${d.confidence}`;
+                list.appendChild(p);
             });
         } else {
             const p = document.createElement("p");
             p.innerText = "No defects detected.";
-            listDiv.appendChild(p);
+            list.appendChild(p);
         }
 
         resultsContainer.appendChild(img);
-        resultsContainer.appendChild(listDiv);
-
+        resultsContainer.appendChild(list);
     } catch (err) {
         console.error(err);
-        statusText.innerText = "Prediction failed. Check console.";
+        statusText.innerText = "Request failed";
     }
-}
+});
