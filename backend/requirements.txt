@@ -1,8 +1,5 @@
-flask
-flask-cors
+Flask
 ultralytics
-pillow
-numpy
-opencv-python-headless
-gunicorn
-werkzeug
+Pillow
+torch
+torchvision
